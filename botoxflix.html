@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTOXFLIX - Botox por Assinatura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        @page :first {
+            margin: 0;
+        }
+        
+        /* ===== PÁGINA 1 - CAPA ===== */
+        .page-cover {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            background: #0a0a0a;
+        }
+        
+        .cover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+        }
+        
+        .cover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.1) 40%,
+                rgba(0,0,0,0.4) 70%,
+                rgba(0,0,0,0.7) 100%
+            );
+            z-index: 2;
+        }
+        
+        .cover-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            width: 90%;
+        }
+        
+        .cover-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 72pt;
+            font-weight: 800;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            margin-bottom: 0.3cm;
+        }
+        
+        .cover-title span {
+            color: #e50914;
+        }
+        
+        .cover-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 22pt;
+            font-weight: 400;
+            color: #f5f5f5;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+        }
+        
+        .cover-tagline {
+            position: absolute;
+            bottom: 5cm;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 3;
+            width: 80%;
+        }
+        
+        .cover-tagline p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14pt;
+            font-weight: 300;
+            color: #e0e0e0;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+        
+        .cover-footer {
+            position: absolute;
+            bottom: 1.5cm;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 3;
+        }
+        
+        .cover-footer p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9pt;
+            font-weight: 400;
+            color: #888;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* ===== PÁGINAS DE CONTEÚDO ===== */
+        .page-content {
+            width: 210mm;
+            height: 297mm;
+            padding: 2.5cm 2.5cm;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            background: #fafafa;
+        }
+        
+        .page-content:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Header decorativo */
+        .page-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8mm;
+            background: linear-gradient(90deg, #1a1a1a 0%, #e50914 50%, #1a1a1a 100%);
+        }
+        
+        .page-number {
+            position: absolute;
+            top: 1.2cm;
+            right: 2cm;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10pt;
+            font-weight: 600;
+            color: #e50914;
+        }
+        
+        /* Títulos */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1.5cm;
+            margin-top: 1cm;
+            letter-spacing: -1px;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #e50914;
+            margin-top: 0.5cm;
+        }
+        
+        /* Texto */
+        .intro-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 14pt;
+            font-weight: 400;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 1.5cm;
+            text-align: justify;
+        }
+        
+        .body-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 400;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 1cm;
+            text-align: justify;
+        }
+        
+        /* Benefícios - Cards */
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6cm;
+            margin: 1.5cm 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            width: 48%;
+            padding: 0.5cm 0.8cm;
+            background: #ffffff;
+            border-left: 3px solid #e50914;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .benefit-check {
+            width: 24px;
+            height: 24px;
+            background: #e50914;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5cm;
+            flex-shrink: 0;
+        }
+        
+        .benefit-check::after {
+            content: '✓';
+            color: white;
+            font-size: 12pt;
+            font-weight: 700;
+        }
+        
+        .benefit-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10pt;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        /* Quote */
+        .quote-box {
+            margin: 1.5cm 0;
+            padding: 1cm 1.5cm;
+            background: #1a1a1a;
+            text-align: center;
+        }
+        
+        .quote-box p {
+            font-family: 'Playfair Display', serif;
+            font-size: 16pt;
+            font-weight: 500;
+            color: #fff;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        
+        /* Ideal para */
+        .ideal-section {
+            margin: 1.5cm 0;
+        }
+        
+        .ideal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.8cm;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .ideal-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ideal-list li {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 400;
+            color: #444;
+            padding: 0.4cm 0;
+            padding-left: 1.2cm;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .ideal-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .ideal-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #e50914;
+            border-radius: 50%;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            margin-top: 1.5cm;
+            padding: 1.5cm;
+            background: #ffffff;
+            border: 2px solid #1a1a1a;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5cm;
+        }
+        
+        .cta-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 1cm;
+        }
+        
+        .whatsapp-button {
+            display: inline-block;
+            padding: 0.6cm 2cm;
+            background: #25d366;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12pt;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 1cm;
+            left: 2.5cm;
+            right: 2.5cm;
+            text-align: center;
+        }
+        
+        .page-footer p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 400;
+            color: #999;
+            letter-spacing: 1px;
+        }
+        
+        /* Logo marca d'água */
+        .watermark {
+            position: absolute;
+            bottom: 2cm;
+            right: 2cm;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24pt;
+            font-weight: 800;
+            color: rgba(0,0,0,0.03);
+            letter-spacing: 3px;
+            transform: rotate(-15deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- PÁGINA 1 - CAPA -->
+    <div class="page-cover">
+        <img src="/mnt/okcomputer/upload/ChatGPT Image 11 de fev. de 2026, 20_22_40.png" alt="BOTOXFLIX" class="cover-image">
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <h1 class="cover-title">BOTOX<span>FLIX</span></h1>
+            <p class="cover-subtitle">Botox por assinatura</p>
+        </div>
+        <div class="cover-tagline">
+            <p>Seu Botox em dia, com naturalidade e previsibilidade.</p>
+        </div>
+        <div class="cover-footer">
+            <p>Clínica Estética | Atendimento Personalizado</p>
+        </div>
+    </div>
+    
+    <!-- PÁGINA 2 - O QUE É -->
+    <div class="page-content">
+        <div class="page-header"></div>
+        <div class="page-number">02</div>
+        
+        <h2 class="section-title">O que é o Botoxflix?</h2>
+        
+        <p class="intro-text">
+            O Botoxflix é um programa de assinatura estética criado para quem deseja manter o rosto sempre descansado, jovem e natural — sem precisar esperar as rugas voltarem para tratar.
+        </p>
+        
+        <p class="body-text">
+            Ao invés de aplicações isoladas, o Botoxflix funciona como um acompanhamento contínuo, com aplicações programadas ao longo do ano, respeitando o seu rosto, sua expressão e sua evolução.
+        </p>
+        
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <span class="benefit-check"></span>
+                <span class="benefit-text">Aplicações planejadas</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check"></span>
+                <span class="benefit-text">Manutenção contínua</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check"></span>
+                <span class="benefit-text">Prevenção do envelhecimento</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check"></span>
+                <span class="benefit-text">Resultados mais naturais</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-check"></span>
+                <span class="benefit-text">Sem exageros ou excesso</span>
+            </div>
+        </div>
+        
+        <div class="quote-box">
+            <p>Mais leve, mais previsível, mais sofisticado.</p>
+        </div>
+        
+        <div class="watermark">BOTOXFLIX</div>
+        
+        <div class="page-footer">
+            <p>Atendimento sob avaliação profissional</p>
+        </div>
+    </div>
+    
+    <!-- PÁGINA 3 - COMO FUNCIONA -->
+    <div class="page-content">
+        <div class="page-header"></div>
+        <div class="page-number">03</div>
+        
+        <h2 class="section-title">Como funciona na prática?</h2>
+        
+        <p class="body-text">
+            Você entra no Botoxflix e recebe um plano personalizado com aplicações programadas durante o ano, com acompanhamento profissional e foco total em naturalidade.
+        </p>
+        
+        <div class="ideal-section">
+            <p class="ideal-title">Ideal para quem:</p>
+            <ul class="ideal-list">
+                <li>Quer prevenir marcas antes que apareçam</li>
+                <li>Busca um resultado contínuo e elegante</li>
+                <li>Prefere previsibilidade ao invés de correções tardias</li>
+                <li>Valoriza estética médica de alto padrão</li>
+            </ul>
+        </div>
+        
+        <div class="cta-section">
+            <p class="cta-title">Quer entrar no Botoxflix?</p>
+            <p class="cta-text">Me chame no WhatsApp e eu te explico como funciona para o seu caso.</p>
+            <div class="whatsapp-button">Chamar no WhatsApp</div>
+        </div>
+        
+        <div class="watermark">BOTOXFLIX</div>
+        
+        <div class="page-footer">
+            <p>Atendimento sob avaliação profissional</p>
+        </div>
+    </div>
+</body>
+</html>
