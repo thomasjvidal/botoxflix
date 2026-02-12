@@ -125,37 +125,36 @@ function App() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-6">
-          <div className="w-full animate-fade-in-up text-center md:text-left -mt-32 md:-mt-40">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight mb-2 px-2 md:px-0">
-              BOTOX<span className="netflix-gradient-text">FLIX</span>
-            </h1>
-            <div className="inline-flex flex-col items-center md:items-start gap-4 md:gap-6">
-              <div className="bg-black/40 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/10 shadow-2xl mb-56 sm:mb-80 md:mb-8">
-                <div className="text-[#ff4d4d] text-lg sm:text-2xl md:text-3xl font-medium tracking-[0.2em] uppercase italic">
-                  Botox por assinatura
-                </div>
+          <div className="w-full animate-fade-in-up text-center md:text-left -mt-32 md:-mt-40 relative">
+            {/* Gradientes Suaves de Fundo */}
+            <div className="absolute -inset-10 bg-black/40 blur-[80px] rounded-full pointer-events-none" />
+            <div className="absolute -inset-20 bg-red-900/10 blur-[100px] rounded-full animate-pulse pointer-events-none" />
+            
+            <div className="relative">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-tight mb-2 px-2 md:px-0">
+                BOTOX<span className="netflix-gradient-text">FLIX</span>
+              </h1>
+              <div className="text-[#ff4d4d] text-lg sm:text-2xl md:text-3xl font-medium tracking-[0.2em] mb-56 sm:mb-80 md:mb-20 uppercase italic px-4 md:px-0">
+                Botox por assinatura
               </div>
-
-              <div className="bg-black/40 backdrop-blur-md rounded-[2rem] p-6 md:p-10 border border-white/10 shadow-2xl w-full max-w-2xl">
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 leading-tight text-center md:text-left">
-                  A sofisticação do botox por assinatura. <br className="hidden md:block" />
-                  <span className="text-gray-500 italic text-base sm:text-lg">Resultados naturais, acompanhamento contínuo.</span>
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6">
-                  <button 
-                    onClick={() => setIsChatOpen(true)}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#E50914] text-white text-sm font-bold transition-all duration-500 shadow-lg shadow-green-500/10 hover:shadow-red-500/20 hover:scale-105 active:scale-95 group"
-                  >
-                    <span>Começar agora</span>
-                    <ChevronDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('sobre')}
-                    className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2"
-                  >
-                    Explorar conceito
-                  </button>
-                </div>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-lg mx-auto md:mx-0 leading-tight">
+                A sofisticação do botox por assinatura. <br className="hidden md:block" />
+                <span className="text-gray-500 italic text-base sm:text-lg">Resultados naturais, acompanhamento contínuo.</span>
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6">
+                <button 
+                  onClick={() => setIsChatOpen(true)}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#E50914] text-white text-sm font-bold transition-all duration-500 shadow-lg shadow-green-500/10 hover:shadow-red-500/20 hover:scale-105 active:scale-95 group"
+                >
+                  <span>Começar agora</span>
+                  <ChevronDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button 
+                  onClick={() => scrollToSection('sobre')}
+                  className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2"
+                >
+                  Explorar conceito
+                </button>
               </div>
             </div>
           </div>
