@@ -213,10 +213,14 @@ Aguardo o retorno! 🥰`;
                   <button
                     key={option}
                     onClick={() => handleOptionClick(option)}
-                    className="text-left p-4 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 text-sm flex items-center justify-between group"
+                    className={`text-left p-4 rounded-xl transition-all duration-300 text-sm flex items-center justify-between group ${
+                      option === "Sim, me redirecione" 
+                        ? "bg-[#25D366] text-white hover:bg-[#128C7E] border-none shadow-lg shadow-green-500/20" 
+                        : "bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black"
+                    }`}
                   >
                     {option}
-                    <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronRight className={`w-5 h-5 transition-opacity ${option === "Sim, me redirecione" ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
                   </button>
                 ))}
               </div>
