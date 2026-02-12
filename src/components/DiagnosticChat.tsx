@@ -114,16 +114,17 @@ const DiagnosticChat = ({ isOpen: externalIsOpen, onOpenChange }: { isOpen?: boo
   };
 
   const handleFinalRedirect = (finalAnswers: Record<string, string>) => {
-    const message = `Olá! Gostaria de saber mais sobre o botox por assinatura e agendar minha avaliação.
-
-Meus dados:
-- Nome: ${finalAnswers.name || 'Não informado'}
-- Idade: ${finalAnswers.age ? `${finalAnswers.age} anos` : 'Não informada'}
-- Melhor horário: ${finalAnswers.schedule || 'Não especificado'}
-- Perfil: ${finalAnswers.experience || 'Não informado'}
-- Objetivo: ${finalAnswers.area || ''}${finalAnswers.area && finalAnswers.goal ? ' e ' : ''}${finalAnswers.goal || ''}
-
-Aguardo o retorno! 🥰`;
+    const message = `Olá! Gostaria de saber mais sobre o botox por assinatura e agendar minha avaliação. 
+ 
+ Meus dados: 
+ 
+ - Nome: ${finalAnswers.name || 'Não informado'}
+ - Idade: ${finalAnswers.age ? `${finalAnswers.age} anos` : 'Não informada'}
+ - Melhor horário: ${finalAnswers.schedule || 'Não especificado'}
+ - Perfil: ${finalAnswers.experience || 'Não informado'}
+ - Objetivo: ${finalAnswers.area || ''}${finalAnswers.area && finalAnswers.goal ? ' e ' : ''}${finalAnswers.goal || ''}
+ 
+ Aguardo o retorno! 🥰`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/5524999226925?text=${encodedMessage}`;
