@@ -215,7 +215,7 @@ Aguardo o retorno! 🥰`;
                     onClick={() => handleOptionClick(option)}
                     className={`text-left p-4 rounded-xl transition-all duration-300 text-sm flex items-center justify-between group ${
                       option === "Sim, me redirecione" 
-                        ? "bg-[#25D366] text-white hover:bg-[#128C7E] border-none shadow-lg shadow-green-500/20" 
+                        ? "bg-[#25D366] text-white hover:bg-[#1aa855] border-none shadow-lg shadow-green-500/20" 
                         : "bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black"
                     }`}
                   >
