@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { 
-  Check, 
   Calendar, 
   Sparkles, 
   Shield, 
   Clock, 
   MessageCircle,
   ChevronDown,
-  Star,
   Award,
   Heart
 } from 'lucide-react';
@@ -77,13 +75,6 @@ function App() {
       image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800',
       desc: 'Equilíbrio perfeito entre ciência e estética para um visual leve e descansado.'
     },
-  ];
-
-  const idealFor = [
-    'Quer prevenir marcas antes que apareçam',
-    'Busca um resultado contínuo e elegante',
-    'Prefere previsibilidade ao invés de correções tardias',
-    'Valoriza estética médica de alto padrão',
   ];
 
   const scrollToSection = (id: string) => {
