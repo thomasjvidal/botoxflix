@@ -199,7 +199,7 @@ Aguardo o retorno!`;
                   <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${msg.sender === 'user' ? 'bg-white/10' : 'bg-[#E50914]'}`}>
                     {msg.sender === 'user' ? <User className="w-4 h-4 text-white" /> : <Bot className="w-4 h-4 text-white" />}
                   </div>
-                  <div className={`p-3 rounded-2xl text-sm leading-relaxed ${msg.sender === 'user' ? 'bg-white text-black rounded-tr-none' : 'bg-white/5 border border-white/10 text-white rounded-tl-none'}`}>
+                  <div className={`p-3 rounded-2xl text-base leading-relaxed ${msg.sender === 'user' ? 'bg-white text-black rounded-tr-none' : 'bg-white/5 border border-white/10 text-white rounded-tl-none'}`}>
                     {msg.text}
                   </div>
                 </div>
@@ -213,10 +213,10 @@ Aguardo o retorno!`;
                   <button
                     key={option}
                     onClick={() => handleOptionClick(option)}
-                    className="text-left p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 text-xs flex items-center justify-between group"
+                    className="text-left p-4 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 text-sm flex items-center justify-between group"
                   >
                     {option}
-                    <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -228,20 +228,20 @@ Aguardo o retorno!`;
           <div className="p-4 border-t border-white/5 bg-black/50 space-y-3">
             {/* Input for text steps */}
             {messages[messages.length - 1]?.sender === 'bot' && steps[currentStep]?.type === 'input' && (
-              <form onSubmit={handleSubmit} className="flex gap-2">
+              <form onSubmit={handleSubmit} className="flex gap-2 items-center bg-white/5 border border-white/10 rounded-xl px-2 py-1 focus-within:border-[#E50914] transition-colors">
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Digite seu nome..."
-                  className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white text-sm focus:outline-none focus:border-[#E50914] transition-colors"
+                  placeholder="Digite aqui..."
+                  className="flex-1 bg-transparent border-none rounded-none px-2 py-2 text-white text-base focus:outline-none"
                   autoFocus
                 />
                 <button
                   type="submit"
-                  className="p-2 bg-[#E50914] text-white rounded-xl hover:scale-105 transition-transform"
+                  className="p-2 bg-[#E50914] text-white rounded-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-5 h-5" />
                 </button>
               </form>
             )}
