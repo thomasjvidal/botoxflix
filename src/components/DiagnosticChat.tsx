@@ -124,7 +124,7 @@ const DiagnosticChat = ({ isOpen: externalIsOpen, onOpenChange }: { isOpen?: boo
  - Perfil: ${finalAnswers.experience || 'Não informado'}
  - Objetivo: ${finalAnswers.area || ''}${finalAnswers.area && finalAnswers.goal ? ' e ' : ''}${finalAnswers.goal || ''}
  
- Aguardo o retorno! 🥰`;
+ Aguardo o retorno!`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/5524999226925?text=${encodedMessage}`;
