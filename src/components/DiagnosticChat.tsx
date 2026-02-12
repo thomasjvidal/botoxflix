@@ -118,12 +118,12 @@ const DiagnosticChat = ({ isOpen: externalIsOpen, onOpenChange }: { isOpen?: boo
 
 Meus dados:
 - Nome: ${finalAnswers.name || 'Não informado'}
-- Idade: ${finalAnswers.age || 'Não informada'}
+- Idade: ${finalAnswers.age ? `${finalAnswers.age} anos` : 'Não informada'}
 - Melhor horário: ${finalAnswers.schedule || 'Não especificado'}
-- Perfil: ${finalAnswers.experience} com foco em ${finalAnswers.area}
-- Objetivo: ${finalAnswers.goal}
+- Perfil: ${finalAnswers.experience || 'Não informado'}
+- Objetivo: ${finalAnswers.area || ''}${finalAnswers.area && finalAnswers.goal ? ' e ' : ''}${finalAnswers.goal || ''}
 
-Aguardo o retorno!`;
+Aguardo o retorno! 🥰`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/5524999226925?text=${encodedMessage}`;
