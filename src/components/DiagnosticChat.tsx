@@ -129,9 +129,13 @@ const DiagnosticChat = ({ isOpen: externalIsOpen, onOpenChange }: { isOpen?: boo
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/5524999226925?text=${encodedMessage}`;
     
-    setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
-    }, 1000);
+    // Tenta abrir em nova aba
+    const newWindow = window.open(whatsappUrl, '_blank');
+    
+    // Fallback para mobile ou bloqueadores de popup
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      window.location.href = whatsappUrl;
+    }
   };
 
   const [inputValue, setInputValue] = useState('');
