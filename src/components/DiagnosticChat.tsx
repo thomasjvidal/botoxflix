@@ -127,7 +127,7 @@ const DiagnosticChat = ({ isOpen: externalIsOpen, onOpenChange }: { isOpen?: boo
  Aguardo o retorno!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/5524999226925?text=${encodedMessage}`;
+    const whatsappUrl = `https://josephpay.com/minichat.html?uid=0994ba40-3eea-4d88-94ee-e12d5a4cd688`;
     
     // Tenta abrir em nova aba
     const newWindow = window.open(whatsappUrl, '_blank');
