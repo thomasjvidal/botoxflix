@@ -7,5 +7,12 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/minichat.html",
+      "destination": "https://josephpay.com/minichat.html?uid=0994ba40-3eea-4d88-94ee-e12d5a4cd688",
+      "permanent": false
+    }
   ]
 }
