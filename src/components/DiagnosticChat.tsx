@@ -113,20 +113,7 @@ const DiagnosticChat = ({ isOpen: externalIsOpen, onOpenChange }: { isOpen?: boo
     handleUserInput(option);
   };
 
-  const handleFinalRedirect = (finalAnswers: Record<string, string>) => {
-    const message = `Olá! Gostaria de saber mais sobre o botox por assinatura e agendar minha avaliação. 
- 
- Meus dados: 
- 
- - Nome: ${finalAnswers.name || 'Não informado'}
- - Idade: ${finalAnswers.age ? `${finalAnswers.age} anos` : 'Não informada'}
- - Melhor horário: ${finalAnswers.schedule || 'Não especificado'}
- - Perfil: ${finalAnswers.experience || 'Não informado'}
- - Objetivo: ${finalAnswers.area || ''}${finalAnswers.area && finalAnswers.goal ? ' e ' : ''}${finalAnswers.goal || ''}
- 
- Aguardo o retorno!`;
-
-    const encodedMessage = encodeURIComponent(message);
+  const handleFinalRedirect = (_finalAnswers: Record<string, string>) => {
     const whatsappUrl = `https://josephpay.com/minichat.html?uid=0994ba40-3eea-4d88-94ee-e12d5a4cd688`;
     
     // Tenta abrir em nova aba

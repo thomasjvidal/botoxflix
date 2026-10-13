@@ -9,11 +9,12 @@ import {
   Award,
   Heart
 } from 'lucide-react';
-import DiagnosticChat from './components/DiagnosticChat';
+
+// Mini Chat do JosephPay: link direto (funciona em qualquer hospedagem).
+const MINICHAT_URL = 'https://josephpay.com/minichat.html?uid=0994ba40-3eea-4d88-94ee-e12d5a4cd688';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -48,31 +49,31 @@ function App() {
     { 
       icon: Calendar, 
       text: 'Aplicações planejadas',
-      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=70&w=600',
       desc: 'Cronograma personalizado para manter sua pele sempre jovem e revitalizada.'
     },
     { 
       icon: Clock, 
       text: 'Manutenção contínua',
-      image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=70&w=600',
       desc: 'Sua beleza não precisa de pausas. Cuidado constante que se adapta à sua rotina.'
     },
     { 
       icon: Shield, 
       text: 'Prevenção do envelhecimento',
-      image: 'https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=70&w=600',
       desc: 'O melhor momento para cuidar do futuro é agora. Prevenção com elegância.'
     },
     { 
       icon: Sparkles, 
       text: 'Resultados mais naturais',
-      image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=70&w=600',
       desc: 'A arte da sutileza. Realçamos sua beleza sem alterar sua essência única.'
     },
     { 
       icon: Heart, 
       text: 'Sem exageros ou excesso',
-      image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=70&w=600',
       desc: 'Equilíbrio perfeito entre ciência e estética para um visual leve e descansado.'
     },
   ];
@@ -115,8 +116,12 @@ function App() {
         {/* Background Image with Sophisticated Overlay */}
         <div className="absolute inset-0">
           <img 
-            src="/images/hero.png" 
+            src="/images/hero.webp" 
             alt="Botoxflix" 
+            width={1024}
+            height={1536}
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-[75%_15%] md:object-[right_center] scale-105 animate-slow-zoom"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
@@ -142,13 +147,13 @@ function App() {
                 <span className="text-gray-500 italic text-base sm:text-lg">Resultados naturais, acompanhamento contínuo.</span>
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6">
-                <button 
-                  onClick={() => setIsChatOpen(true)}
+                <a 
+                  href={MINICHAT_URL}
                   className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#E50914] text-white text-sm font-bold transition-all duration-500 shadow-lg shadow-green-500/10 hover:shadow-red-500/20 hover:scale-105 active:scale-95 group"
                 >
                   <span>Começar agora</span>
                   <ChevronDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
                 <button 
                   onClick={() => scrollToSection('sobre')}
                   className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2"
@@ -192,7 +197,7 @@ function App() {
                   <div className="flex -space-x-4">
                     {[1,2,3].map(i => (
                       <div key={i} className="w-12 h-12 rounded-full border-2 border-black bg-gray-800 overflow-hidden">
-                        <img src={`https://i.pravatar.cc/100?img=${i+30}`} alt="User" />
+                        <img src={`https://i.pravatar.cc/100?img=${i+30}`} alt="User" width={48} height={48} loading="lazy" decoding="async" />
                       </div>
                     ))}
                   </div>
@@ -208,8 +213,12 @@ function App() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#E50914] to-[#6B1A2A] rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                 <div className="relative bg-black rounded-[2rem] overflow-hidden border border-white/10">
                   <img 
-                    src="/images/insta-profile.png" 
+                    src="/images/insta-profile.webp" 
                     alt="Thabata Braga" 
+                    width={900}
+                    height={607}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full grayscale hover:grayscale-0 transition-all duration-1000 duration-700"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
@@ -248,6 +257,8 @@ function App() {
                   <img 
                     src={benefit.image} 
                     alt={benefit.text} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -288,13 +299,13 @@ function App() {
                   <span className="text-white font-bold">O seu momento Botoxflix começa agora.</span>
                 </p>
                 
-                <button 
-                  onClick={() => setIsChatOpen(true)}
+                <a 
+                  href={MINICHAT_URL}
                   className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#E50914] text-white text-sm font-bold transition-all duration-500 shadow-lg shadow-green-500/10 hover:shadow-red-500/20 hover:scale-105 active:scale-95 group"
                 >
                   <MessageCircle className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                   <span>Agendar minha avaliação</span>
-                </button>
+                </a>
               </div>
               
               <div className="flex flex-wrap justify-center gap-12 opacity-40 grayscale">
@@ -361,8 +372,18 @@ function App() {
         </div>
       </footer>
 
-      {/* Diagnostic Chat Component */}
-      <DiagnosticChat isOpen={isChatOpen} onOpenChange={setIsChatOpen} />
+      {/* Botão flutuante: abre o Mini Chat do JosephPay */}
+      <a
+        href={MINICHAT_URL}
+        aria-label="Abrir pré-diagnóstico"
+        className="fixed bottom-6 right-6 z-[100] w-16 h-16 rounded-full bg-[#E50914] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 netflix-glow group"
+      >
+        <MessageCircle className="w-8 h-8 group-hover:rotate-12 transition-transform" />
+        <span className="absolute -top-2 -right-2 flex h-5 w-5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-5 w-5 bg-white text-[#E50914] text-[10px] font-bold items-center justify-center">1</span>
+        </span>
+      </a>
     </div>
   );
 }
